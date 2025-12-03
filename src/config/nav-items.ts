@@ -1,24 +1,24 @@
-export type UserRole = "tourist" | "guide" | "admin" | "guest";
+export type UserRole = "ADMIN" | "TOURIST" | "GUIDE" | "GUEST";
 
 export const navConfig = {
-  guest: [
+  GUEST: [
     { href: "/tours", label: "Explore Tours" },
     { href: "/become-guide", label: "Become a Guide" },
   ],
 
-  tourist: [
+  TOURIST: [
     { href: "/tours", label: "Explore Tours" },
     { href: "/my-bookings", label: "My Bookings" },
     { href: "/profile", label: "Profile" },
   ],
 
-  guide: [
+  GUIDE: [
     { href: "/tours", label: "Explore Tours" },
     { href: "/guide/dashboard", label: "Dashboard" },
     { href: "/profile", label: "Profile" },
   ],
 
-  admin: [
+  ADMIN: [
     { href: "/admin", label: "Admin Dashboard" },
     { href: "/admin/users", label: "Manage Users" },
     { href: "/admin/listings", label: "Manage Listings" },

@@ -1,4 +1,5 @@
-import { navConfig, UserRole } from "@/config/nav-items";
+import { navConfig } from "@/config/nav-items";
+import getUserRole from "@/lib/getUserRole";
 import { Menu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -6,20 +7,12 @@ import Logo from "../../assets/icons/logo.png";
 import { Button } from "../ui/button";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "../ui/sheet";
 import LogoutButton from "./LogoutButton";
-// import getUserRole from "@/lib/getUserRole";
-
-const getUserRole = (): UserRole => {
-  return "guest";
-  // return "tourist";
-  // return "guide";
-  // return "admin";
-};
 
 const PublicNavbar = async () => {
-  const role = getUserRole(); // "guest" | "tourist" | "guide" | "admin"
+  const role = await getUserRole();
 
   const navItems = navConfig[role];
-  const isLoggedIn = role !== "guest";
+  const isLoggedIn = role !== "GUEST";
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur">
