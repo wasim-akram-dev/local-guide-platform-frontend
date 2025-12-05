@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { UserRole } from "@/config/nav-items";
+import { UserRole } from "@/config/nav-config";
 import { getCookie } from "@/services/auth/tokenHandlers";
 import jwt from "jsonwebtoken";
 

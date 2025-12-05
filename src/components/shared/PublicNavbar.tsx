@@ -1,5 +1,5 @@
-import { navConfig } from "@/config/nav-items";
-import getUserRole from "@/lib/getUserRole";
+import { getNavConfig } from "@/config/nav-config";
+import { getUserInfo } from "@/services/auth/getUserInfo";
 import { Menu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,10 +9,9 @@ import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "../ui/sheet";
 import LogoutButton from "./LogoutButton";
 
 const PublicNavbar = async () => {
-  const role = await getUserRole();
-
-  const navItems = navConfig[role];
-  const isLoggedIn = role !== "GUEST";
+  const navItems = await getNavConfig();
+  const user = await getUserInfo();
+  const isLoggedIn = !!user;
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur">
@@ -22,21 +21,21 @@ const PublicNavbar = async () => {
           <Image src={Logo} alt="Locana" width={150} height={50} />
         </Link>
 
-        {/* Desktop Navigation */}
+        {/* Desktop Menu */}
         <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
-          {navItems.map((link) => (
+          {navItems?.map((item) => (
             <Link
-              key={link.label}
-              href={link.href}
-              className="text-foreground hover:text-primary transition-colors"
+              key={item.href}
+              href={item.href}
+              className="hover:text-primary transition-colors"
             >
-              {link.label}
+              {item.label}
             </Link>
           ))}
         </nav>
 
-        {/* Auth Buttons */}
-        <div className="hidden md:flex items-center space-x-2">
+        {/* Desktop Auth Buttons */}
+        <div className="hidden md:flex items-center space-x-3">
           {isLoggedIn ? (
             <LogoutButton />
           ) : (
@@ -45,7 +44,7 @@ const PublicNavbar = async () => {
                 <Button>Register</Button>
               </Link>
               <Link href="/login">
-                <Button>Login</Button>
+                <Button variant="outline">Login</Button>
               </Link>
             </>
           )}
@@ -56,20 +55,21 @@ const PublicNavbar = async () => {
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="outline">
-                <Menu />
+                <Menu size={20} />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] p-4">
+
+            <SheetContent side="right" className="w-[260px] p-4">
               <SheetTitle className="sr-only">Navigation</SheetTitle>
 
-              <nav className="flex flex-col space-y-4 mt-8">
-                {navItems.map((link) => (
-                  <Link key={link.label} href={link.href}>
-                    {link.label}
+              <nav className="flex flex-col space-y-4 mt-10">
+                {navItems?.map((item) => (
+                  <Link key={item.href} href={item.href}>
+                    {item.label}
                   </Link>
                 ))}
 
-                <div className="border-t pt-4 flex flex-col space-y-4">
+                <div className="border-t pt-4 flex flex-col gap-3">
                   {isLoggedIn ? (
                     <LogoutButton />
                   ) : (
@@ -78,7 +78,7 @@ const PublicNavbar = async () => {
                         <Button>Register</Button>
                       </Link>
                       <Link href="/login">
-                        <Button>Login</Button>
+                        <Button variant="outline">Login</Button>
                       </Link>
                     </>
                   )}
