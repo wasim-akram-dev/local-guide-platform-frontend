@@ -15,7 +15,8 @@ export async function getNavConfig() {
 
     TOURIST: [
       { href: "/tours", label: "Explore Tours" },
-      { href: "/my-bookings", label: "My Bookings" },
+      { href: "/tourist/dashboard/my-trips", label: "My Bookings" },
+      { href: "/tourist/dashboard", label: "Dashboard" },
       { href: `/profile/${userId}`, label: "Profile" },
     ],
 
@@ -26,9 +27,9 @@ export async function getNavConfig() {
     ],
 
     ADMIN: [
-      { href: "/admin", label: "Admin Dashboard" },
-      { href: "/admin/users", label: "Manage Users" },
-      { href: "/admin/listings", label: "Manage Listings" },
+      { href: "/admin/dashboard", label: "Admin Dashboard" },
+      { href: "/admin/dashboard/user-management", label: "Manage Users" },
+      { href: "/admin/dashboard/listing-management", label: "Manage Listings" },
       { href: `/profile/${userId}`, label: "Profile" },
     ],
   };

@@ -1,18 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use server";
 
-// import {
-//   getDefaultDashboardRoute,
-//   isValidRedirectForRole,
-//   UserRole,
-// } from "@/lib/auth-utils";
-import { UserRole } from "@/lib/auth-utils";
+import {
+  getDefaultDashboardRoute,
+  isValidRedirectForRole,
+  UserRole,
+} from "@/lib/auth-utils";
 import { loginValidationZodSchema } from "@/zod/auth.validation";
 import { parse } from "cookie";
 import jwt, { JwtPayload } from "jsonwebtoken";
+import { redirect } from "next/navigation";
 import { setCookie } from "./tokenHandlers";
-
-// import { redirect } from "next/navigation";
 
 export const loginUser = async (
   _currentState: any,
@@ -113,16 +111,16 @@ export const loginUser = async (
       throw new Error(result.message || "Login Failed");
     }
 
-    // if (redirectTo) {
-    //   const requestedPath = redirectTo.toString();
-    //   if (isValidRedirectForRole(requestedPath, userRole)) {
-    //     redirect(`${requestedPath}?loggedIn=true`);
-    //   } else {
-    //     redirect(`${getDefaultDashboardRoute(userRole)}?loggedIn=true`);
-    //   }
-    // } else {
-    //   redirect(`${getDefaultDashboardRoute(userRole)}?loggedIn=true`);
-    // }
+    if (redirectTo) {
+      const requestedPath = redirectTo.toString();
+      if (isValidRedirectForRole(requestedPath, userRole)) {
+        redirect(`${requestedPath}?loggedIn=true`);
+      } else {
+        redirect(`${getDefaultDashboardRoute(userRole)}?loggedIn=true`);
+      }
+    } else {
+      redirect(`${getDefaultDashboardRoute(userRole)}?loggedIn=true`);
+    }
     return result;
   } catch (error: any) {
     // Re-throw NEXT_REDIRECT errors so Next.js can handle them
