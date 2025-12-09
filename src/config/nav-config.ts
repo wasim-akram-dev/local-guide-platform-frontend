@@ -23,6 +23,7 @@ export async function getNavConfig() {
     GUIDE: [
       { href: "/tours", label: "Explore Tours" },
       { href: "/guide/dashboard", label: "Dashboard" },
+      { href: "/guide/dashboard/my-listings", label: "My Listings" },
       { href: `/profile/${userId}`, label: "Profile" },
     ],
 
