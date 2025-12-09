@@ -20,16 +20,21 @@ async function getListings(searchParams: any) {
   return res.json();
 }
 
-export default async function ExplorePage({ searchParams }: any) {
-  const { data } = await getListings(searchParams);
+export default async function ExplorePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  const searchParamsObj = await searchParams;
+  const { data } = await getListings(searchParamsObj);
   // console.log(data, "data");
   return (
-    <div className="grid grid-cols-12 gap-6 p-6">
-      <aside className="col-span-3">
+    <div className="flex flex-col gap-6 p-6 md:flex-row md:my-12 md:gap-10">
+      <aside className="">
         <FilterSidebar />
       </aside>
 
-      <main className="col-span-9">
+      <main className="">
         <h1 className="text-2xl font-bold mb-4">
           Explore Tours ({data.length})
         </h1>

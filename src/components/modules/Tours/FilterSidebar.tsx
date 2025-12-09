@@ -24,12 +24,13 @@ export default function FilterSidebar() {
       search,
     }).toString();
 
-    router.push(`/explore?${query}`);
+    router.push(`/tours?${query}`);
+    // setCity("");
   };
 
   return (
-    <div className="border p-4 rounded space-y-4">
-      <h2 className="text-lg font-bold">Filters</h2>
+    <div className="flex flex-col items-center justify-center space-y-4 md:space-y-6 bg-white px-4 py-6 shadow-2xl rounded-xl">
+      <h2 className="text-lg font-bold">Search & Filters Options</h2>
 
       <input
         value={search}
@@ -45,12 +46,19 @@ export default function FilterSidebar() {
         className="w-full border p-2 rounded"
       />
 
-      <input
+      <select
         value={category}
         onChange={(e) => setCategory(e.target.value)}
-        placeholder="Category"
         className="w-full border p-2 rounded"
-      />
+      >
+        <option value="">Please choose category:</option>
+        <option value="Adventure">Adventure</option>
+        <option value="City Tour">City Tour</option>
+        <option value="Culture">Culture</option>
+        <option value="Historical">Historical</option>
+        <option value="Nature">Nature</option>
+        <option value="Others">Others</option>
+      </select>
 
       <div className="grid grid-cols-2 gap-2">
         <input
