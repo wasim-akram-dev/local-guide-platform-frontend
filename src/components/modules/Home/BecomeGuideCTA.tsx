@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const BecomeGuideCTA = () => {
   return (
@@ -11,9 +12,14 @@ const BecomeGuideCTA = () => {
       </p>
 
       <div className="mt-6">
-        <Button size="lg" className="bg-white text-primary hover:bg-gray-100">
-          Become a Guide
-        </Button>
+        <Link href="/register?role=guide">
+          <Button
+            size="lg"
+            className="bg-white text-primary hover:bg-gray-100 cursor-pointer"
+          >
+            Become a Guide
+          </Button>
+        </Link>
       </div>
     </section>
   );

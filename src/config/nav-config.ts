@@ -10,7 +10,7 @@ export async function getNavConfig() {
   const configs = {
     GUEST: [
       { href: "/tours", label: "Explore Tours" },
-      { href: "/become-guide", label: "Become a Guide" },
+      { href: "/register?role=guide", label: "Become a Guide" },
     ],
 
     TOURIST: [
