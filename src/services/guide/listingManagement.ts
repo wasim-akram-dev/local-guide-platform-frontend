@@ -23,7 +23,6 @@ export async function createListing(_prevState: any, formData: FormData) {
       city: formData.get("city") as string,
       category: formData.get("category") as IListing["category"],
       images: JSON.parse((formData.get("images") as string) || "[]"),
-      guideId: formData.get("guideId") as string, // must pass guideId manually (hidden input or server session)
     };
 
     const validate = zodValidator(payload, createListingZodSchema);
@@ -35,6 +34,7 @@ export async function createListing(_prevState: any, formData: FormData) {
     });
 
     const result = await response.json();
+    // console.log(result);
     return result;
   } catch (error: any) {
     return {

@@ -16,7 +16,6 @@ export interface IListing {
     | "Historical"
     | "Nature"
     | "Others";
-  guideId: string;
   createdAt?: string;
   updatedAt?: string;
 }

@@ -16,14 +16,14 @@ export const createListingZodSchema = z.object({
   itinerary: z.string().min(5, "Itinerary must be minimum 5 characters"),
 
   tourFee: z
-    .string()
+    .number()
     .refine(
       (v) => !isNaN(Number(v)) && Number(v) > 0,
       "Tour fee must be a valid number"
     ),
 
   duration: z
-    .string()
+    .number()
     .refine(
       (v) => !isNaN(Number(v)) && Number(v) >= 1,
       "Duration must be at least 1"
@@ -34,7 +34,7 @@ export const createListingZodSchema = z.object({
     .min(3, "Meeting point must be at least 3 characters"),
 
   maxGroupSize: z
-    .string()
+    .number()
     .refine(
       (v) => !isNaN(Number(v)) && Number(v) >= 1,
       "Group size must be at least 1"

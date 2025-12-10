@@ -209,6 +209,19 @@ const ListingFormDialog = ({
               <InputFieldError state={state} field="maxGroupSize" />
             </Field>
 
+            {/* Meeting Point */}
+            <Field>
+              <FieldLabel htmlFor="meetingPoint">Meeting Point</FieldLabel>
+              <Input
+                id="meetingPoint"
+                name="meetingPoint"
+                type="string"
+                placeholder="Meeting Point Name"
+                defaultValue={listing?.meetingPoint}
+              />
+              <InputFieldError state={state} field="meetingPoint" />
+            </Field>
+
             {/* Images URL Array */}
             <Field>
               <FieldLabel>Image URLs</FieldLabel>
