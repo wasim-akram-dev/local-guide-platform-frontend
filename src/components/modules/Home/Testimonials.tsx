@@ -1,38 +1,75 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { Quote } from "lucide-react";
+import Image from "next/image";
+import DemoUserPhoto from "../../../assets/images/avatar.jpeg";
+
 const testimonials = [
   {
-    name: "Aisha Khan",
-    review:
-      "My guide showed me hidden food spots in Dhaka. Amazing experience!",
-    img: "https://randomuser.me/api/portraits/women/68.jpg",
+    id: 1,
+    name: "Amina Rahman",
+    photo: DemoUserPhoto,
+    feedback:
+      "I had an amazing experience with my local guide. The tour was authentic and full of surprises!",
+    location: "Dhaka, Bangladesh",
   },
   {
-    name: "John David",
-    review: "Locana made my Sylhet trip unforgettable. Highly recommended!",
-    img: "https://randomuser.me/api/portraits/men/22.jpg",
+    id: 2,
+    name: "Rafiq Hossain",
+    photo: DemoUserPhoto,
+    feedback:
+      "Locana helped me find a guide who showed me hidden gems around the city. Highly recommended!",
+    location: "Chittagong, Bangladesh",
+  },
+  {
+    id: 3,
+    name: "Sabrina Karim",
+    photo: DemoUserPhoto,
+    feedback:
+      "The tour was perfectly organized. My guide was knowledgeable, friendly, and very accommodating.",
+    location: "Sylhet, Bangladesh",
   },
 ];
 
 const Testimonials = () => {
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-20 bg-white">
       <div className="container mx-auto px-4 text-center">
-        <h2 className="text-3xl font-bold">What Travelers Say</h2>
+        <h2 className="text-3xl md:text-4xl font-bold">
+          What Our Tourists Say
+        </h2>
+        <p className="text-gray-600 mt-2">
+          Hear from people who explored with Locana
+        </p>
 
-        <div className="grid md:grid-cols-2 gap-8 mt-10">
+        <div className="grid md:grid-cols-3 gap-8 mt-12">
           {testimonials.map((t, i) => (
-            <div
-              key={i}
-              className="bg-white rounded-xl p-6 shadow hover:shadow-lg transition"
+            <motion.div
+              key={t.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition-all duration-300"
             >
-              <img
-                src={t.img}
-                className="w-20 h-20 rounded-full mx-auto"
-                alt={t.name}
-              />
-
-              <p className="text-gray-700 mt-4 italic">"{t.review}"</p>
-              <p className="font-semibold mt-3">{t.name}</p>
-            </div>
+              <div className="flex flex-col items-center">
+                <div className="w-16 h-16 rounded-full overflow-hidden mb-4">
+                  <Image
+                    src={t.photo}
+                    alt={t.name}
+                    className="w-full h-full object-cover"
+                    fill={false}
+                  />
+                </div>
+                <Quote className="text-primary mb-2" />
+                <p className="text-gray-700 italic mb-4">
+                  &quot;{t.feedback}&quot;
+                </p>
+                <h4 className="font-semibold text-lg">{t.name}</h4>
+                <p className="text-gray-500 text-sm">{t.location}</p>
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>

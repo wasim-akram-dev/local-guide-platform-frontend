@@ -129,3 +129,16 @@ export async function deleteListing(id: string) {
     };
   }
 }
+
+// ---------------------- GET LISTINGS ----------------------
+export async function getListings() {
+  try {
+    const response = await serverFetch.get(`/listings`);
+    return await response.json();
+  } catch (error: any) {
+    return {
+      success: false,
+      message: error.message ?? "Failed to fetch listings",
+    };
+  }
+}
