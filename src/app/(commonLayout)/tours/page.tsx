@@ -30,11 +30,11 @@ export default async function ExplorePage({
   // console.log(data, "data");
   return (
     <div className="flex flex-col gap-6 p-6 md:flex-row md:my-12 md:gap-10">
-      <aside className="">
+      <aside className="w-full md:w-2/6 lg:w-1/4 md:sticky md:top-24 h-fit">
         <FilterSidebar />
       </aside>
 
-      <main className="">
+      <main className="w-full md:w-4/6 lg:w-3/4">
         <h1 className="text-2xl font-bold mb-4">
           Explore Tours ({data.length})
         </h1>

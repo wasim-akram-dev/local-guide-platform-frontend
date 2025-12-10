@@ -87,7 +87,7 @@ export default function FilterSidebar() {
 
       <button
         onClick={handleApply}
-        className="bg-blue-600 text-white w-full p-2 rounded font-semibold"
+        className="bg-slate-900 text-white w-full p-2 rounded font-semibold"
       >
         Apply Filters
       </button>

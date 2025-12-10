@@ -13,13 +13,14 @@ export default function ListingCard({ listing }: any) {
   return (
     <Link href={`/tours/${listing.id}`}>
       <div className="border rounded-md overflow-hidden shadow hover:scale-[1.02] transition cursor-pointer">
-        <Image
-          src={listing?.images?.[0] || "/next.svg"}
-          className="w-full h-48 object-cover"
-          alt={listing?.title}
-          width={100}
-          height={192}
-        />
+        <div style={{ position: "relative", width: "100%", height: "300px" }}>
+          <Image
+            src={listing?.images?.[0] || "/next.svg"}
+            alt={listing?.title}
+            fill
+            style={{ objectFit: "cover" }}
+          />
+        </div>
 
         <div className="p-4 space-y-1">
           <h2 className="font-bold text-lg">{listing?.title}</h2>
@@ -28,7 +29,7 @@ export default function ListingCard({ listing }: any) {
           </p>
 
           <p className="text-blue-600 font-semibold">
-            ${listing?.tourFee} / person
+            ৳{listing?.tourFee} / person
           </p>
 
           <p className="text-sm text-gray-700">

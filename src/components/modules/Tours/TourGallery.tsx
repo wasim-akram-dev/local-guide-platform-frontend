@@ -18,7 +18,7 @@ export default function TourGallery({
       />
 
       <div className="grid grid-cols-2 gap-4">
-        {images.slice(1, 4).map((img, i) => (
+        {images.slice(0, 4).map((img, i) => (
           <Image
             key={i}
             src={img}

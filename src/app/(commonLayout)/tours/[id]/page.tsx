@@ -3,6 +3,7 @@ import GuideInfo from "@/components/modules/Tours/GuideInfo";
 import Reviews from "@/components/modules/Tours/Reviews";
 import TourGallery from "@/components/modules/Tours/TourGallery";
 import TourInfo from "@/components/modules/Tours/TourInfo";
+import getUserRole from "@/lib/getUserRole";
 
 async function getListing(id: string) {
   const res = await fetch(
@@ -21,12 +22,13 @@ export default async function TourDetailsPage({
 }) {
   const { id } = await params;
   const { data: tour } = await getListing(id);
-  console.log(tour, "tour");
+  // console.log(tour, "tour");
+  const userRole = await getUserRole();
 
   return (
-    <div className="container px-4 py-8 space-y-10">
+    <div className="container mx-auto px-4 py-8 space-y-10 border bg-slate-50">
       <TourGallery images={tour?.images} title={tour?.title} />
-
+      <hr />
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Left Side */}
         <div className="md:col-span-2 space-y-6">
@@ -36,7 +38,11 @@ export default async function TourDetailsPage({
         </div>
 
         {/* Right - Booking Widget */}
-        <BookingWidget tourId={tour?.id} tourFee={tour?.tourFee} />
+        <BookingWidget
+          tourId={tour?.id}
+          tourFee={tour?.tourFee}
+          userRole={userRole}
+        />
       </div>
     </div>
   );

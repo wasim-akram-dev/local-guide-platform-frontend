@@ -6,10 +6,10 @@ export default function Reviews({ reviews }: { reviews: any[] }) {
 
       {reviews?.length ? (
         reviews.map((r) => (
-          <div key={r.id} className="border p-4 rounded-xl">
-            <p className="font-semibold">{r.user.name}</p>
-            <p className="text-gray-600">{r.comment}</p>
-            <p className="text-yellow-500">Rating: {r.rating}⭐</p>
+          <div key={r?.id} className="border p-4 rounded-xl">
+            <p className="font-semibold">{r?.user?.name}</p>
+            <p className="text-gray-600">{r?.comment}</p>
+            <p className="text-yellow-500">Rating: {r?.rating}⭐</p>
           </div>
         ))
       ) : (

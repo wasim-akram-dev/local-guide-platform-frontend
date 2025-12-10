@@ -1,4 +1,4 @@
-export type UserRole = "ADMIN" | "TOURIST" | "GUIDE";
+export type UserRole = "ADMIN" | "TOURIST" | "GUIDE" | "GUEST";
 
 // exact : ["/my-profile", "settings"]
 //   patterns: [/^\/dashboard/, /^\/patient/], // Routes starting with /dashboard/* /patient/*
