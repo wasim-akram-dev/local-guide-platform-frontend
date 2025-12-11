@@ -29,7 +29,11 @@ const DashboardMobileSidebar = ({
     <div className=" flex h-full flex-col">
       {/* Logo */}
       <div>
-        <Link href={dashboardHome}>
+        {/* <Link href={dashboardHome}>
+          <span className="text-xl font-bold text-primary">Locana</span>
+          <Image src={Logo} alt="Locana" width={150} height={50} />
+        </Link> */}
+        <Link href={"/"}>
           {/* <span className="text-xl font-bold text-primary">Locana</span> */}
           <Image src={Logo} alt="Locana" width={150} height={50} />
         </Link>

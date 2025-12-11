@@ -1,5 +1,5 @@
-const GuideManagementPage = () => {
-  return <div>Guide Management Page</div>;
-};
+import UserManagementTable from "../UserManagementTable";
 
-export default GuideManagementPage;
+export default function GuideManagementPage() {
+  return <UserManagementTable roleFilter="GUIDE" />;
+}

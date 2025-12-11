@@ -1,5 +1,5 @@
-const TouristManagementPage = () => {
-  return <div>Tourist Management Page</div>;
-};
+import UserManagementTable from "../UserManagementTable";
 
-export default TouristManagementPage;
+export default function TouristManagementPage() {
+  return <UserManagementTable roleFilter="TOURIST" />;
+}

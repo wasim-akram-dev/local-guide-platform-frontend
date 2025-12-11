@@ -1,5 +1,5 @@
-const AdminManagementPage = () => {
-  return <div>Admin Management Page</div>;
-};
+import UserManagementTable from "../UserManagementTable";
 
-export default AdminManagementPage;
+export default function AdminManagementPage() {
+  return <UserManagementTable roleFilter="ADMIN" />;
+}

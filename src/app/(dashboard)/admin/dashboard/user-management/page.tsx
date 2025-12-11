@@ -1,5 +1,5 @@
-const UserManagementPage = () => {
-  return <div>User Management Page</div>;
-};
+import UserManagementTable from "./UserManagementTable";
 
-export default UserManagementPage;
+export default function UserManagementPage() {
+  return <UserManagementTable roleFilter="ALL" />;
+}
