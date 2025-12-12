@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import BecomeGuideCTA from "@/components/modules/Home/BecomeGuideCTA";
 import Categories from "@/components/modules/Home/Categories";
 import FeaturedTours from "@/components/modules/Home/FeaturedTours";
@@ -14,7 +15,9 @@ export const metadata = {
 };
 
 export default async function Home() {
-  const { data: tours } = await getListings();
+  const response = await getListings();
+  const tours = Array.isArray(response?.data) ? response.data : [];
+  console.log("from home", tours);
 
   return (
     <main className="space-y-20">

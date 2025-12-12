@@ -131,14 +131,49 @@ export async function deleteListing(id: string) {
 }
 
 // ---------------------- GET LISTINGS ----------------------
-export async function getListings() {
+// export async function getListings() {
+//   try {
+//     const response = await serverFetch.get(`/listings`, {
+//       credentials: "include",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//     });
+//     return await response.json();
+//   } catch (error: any) {
+//     return {
+//       success: false,
+//       message: error.message ?? "Failed to fetch listings",
+//     };
+//   }
+// }
+
+export const getListings = async () => {
   try {
-    const response = await serverFetch.get(`/listings`);
-    return await response.json();
-  } catch (error: any) {
-    return {
-      success: false,
-      message: error.message ?? "Failed to fetch listings",
-    };
+    const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+
+    if (!apiUrl) {
+      console.error("BACKEND_API_URL not defined!");
+      return { data: [] };
+    }
+
+    const res = await fetch(`${apiUrl}/listings`, {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!res.ok) {
+      console.error("Failed to fetch listings:", res.statusText);
+      return { data: [] };
+    }
+
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    console.error("Error in getListings:", err);
+    return { data: [] };
   }
-}
+};

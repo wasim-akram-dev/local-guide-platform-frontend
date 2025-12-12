@@ -8,7 +8,8 @@ import Link from "next/link";
 import DemoFeaturedDestinationsImage from "../../../assets/images/hills.jpg";
 
 const FeaturedTours = ({ tours }: { tours: IListing[] }) => {
-  // console.log(tours);
+  console.log("featured", tours);
+  if (!Array.isArray(tours)) return null;
   return (
     <section className="py-20">
       <div className="container mx-auto px-4">
@@ -20,7 +21,7 @@ const FeaturedTours = ({ tours }: { tours: IListing[] }) => {
         </p>
 
         <div className="grid md:grid-cols-3 gap-8 mt-12">
-          {tours.map((tour, index) => (
+          {(tours ?? []).map((tour, index) => (
             <motion.div
               key={tour?.id}
               initial={{ opacity: 0, y: 20 }}
