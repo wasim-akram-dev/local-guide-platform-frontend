@@ -52,6 +52,7 @@ export default function UserManagementTable({
     setLoading(true);
     try {
       const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users`, {
+        method: "GET",
         credentials: "include",
       });
 
