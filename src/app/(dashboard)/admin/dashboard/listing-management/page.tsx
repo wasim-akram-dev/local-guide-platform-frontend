@@ -59,7 +59,7 @@ export default function AdminListingManagementPage() {
     setLoading(true);
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/listings`,
+        `${process.env.NEXT_PUBLIC_BASE_API_URL}/listings`,
         {
           credentials: "include",
         }
@@ -82,7 +82,7 @@ export default function AdminListingManagementPage() {
     if (!listingToDelete) return;
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/listings/${listingToDelete.id}`,
+        `${process.env.NEXT_PUBLIC_BASE_API_URL}/listings/${listingToDelete.id}`,
         {
           method: "DELETE",
           credentials: "include",
@@ -104,7 +104,7 @@ export default function AdminListingManagementPage() {
     if (!listingToEdit) return;
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/listings/${listingToEdit.id}`,
+        `${process.env.NEXT_PUBLIC_BASE_API_URL}/listings/${listingToEdit.id}`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },

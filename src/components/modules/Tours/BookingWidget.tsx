@@ -35,7 +35,7 @@ export default function BookingWidget({
 
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/bookings`,
+        `${process.env.NEXT_PUBLIC_BASE_API_URL}/bookings`,
         {
           method: "POST",
           headers: {

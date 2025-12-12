@@ -6,7 +6,7 @@ import { Suspense } from "react";
 
 async function getMyListings(guideId: string) {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/listings?guideId=${guideId}`,
+    `${process.env.NEXT_PUBLIC_BASE_API_URL}/listings?guideId=${guideId}`,
     {
       cache: "no-store",
     }

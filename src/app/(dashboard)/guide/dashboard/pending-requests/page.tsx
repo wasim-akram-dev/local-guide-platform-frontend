@@ -17,7 +17,7 @@ export default function PendingRequestsPage() {
   const fetchMyBookings = async () => {
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/bookings`,
+        `${process.env.NEXT_PUBLIC_BASE_API_URL}/bookings`,
         {
           credentials: "include",
         }
@@ -40,7 +40,7 @@ export default function PendingRequestsPage() {
   const updateStatus = async (id: string, status: string) => {
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/bookings/${id}/status`,
+        `${process.env.NEXT_PUBLIC_BASE_API_URL}/bookings/${id}/status`,
         {
           method: "PATCH",
           headers: {

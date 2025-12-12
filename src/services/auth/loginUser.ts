@@ -41,7 +41,7 @@ export const loginUser = async (
     }
 
     // const res = await fetch(
-    //   `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/login`,
+    //   `${process.env.NEXT_PUBLIC_BASE_API_URL}/auth/login`,
     //   {
     //     method: "POST",
     //     body: JSON.stringify(loginData),

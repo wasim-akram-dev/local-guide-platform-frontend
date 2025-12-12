@@ -4,7 +4,7 @@
 export async function getProfile(userId: string) {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/users/${userId}`,
+      `${process.env.NEXT_PUBLIC_BASE_API_URL}/users/${userId}`,
       {
         cache: "no-store",
       }

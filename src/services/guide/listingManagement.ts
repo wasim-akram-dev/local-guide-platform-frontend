@@ -150,7 +150,7 @@ export async function deleteListing(id: string) {
 
 export const getListings = async () => {
   try {
-    const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+    const apiUrl = process.env.NEXT_PUBLIC_BASE_API_URL;
 
     if (!apiUrl) {
       console.error("BACKEND_API_URL not defined!");

@@ -81,7 +81,7 @@ frontend/
 Create a `.env.local` file:
 
 ```
-NEXT_PUBLIC_BACKEND_URL=http://localhost:5000/api
+NEXT_PUBLIC_BASE_API_URL=http://localhost:5000/api
 NEXT_PUBLIC_CLOUDINARY_PRESET=your_value
 NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=your_value
 

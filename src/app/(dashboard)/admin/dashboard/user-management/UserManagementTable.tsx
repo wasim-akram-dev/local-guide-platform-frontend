@@ -51,7 +51,7 @@ export default function UserManagementTable({
   const fetchUsers = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/users`, {
         method: "GET",
         credentials: "include",
       });
@@ -86,7 +86,7 @@ export default function UserManagementTable({
     if (!userToDelete) return;
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/users/${userToDelete.id}`,
+        `${process.env.NEXT_PUBLIC_BASE_API_URL}/users/${userToDelete.id}`,
         {
           method: "DELETE",
           credentials: "include",
@@ -108,7 +108,7 @@ export default function UserManagementTable({
     if (!userToUpdate) return;
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/users/${userToUpdate.id}/role`,
+        `${process.env.NEXT_PUBLIC_BASE_API_URL}/users/${userToUpdate.id}/role`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },

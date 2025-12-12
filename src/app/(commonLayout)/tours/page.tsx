@@ -11,7 +11,7 @@ async function getListings(searchParams: any) {
   }
 
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/listings?${query}`,
+    `${process.env.NEXT_PUBLIC_BASE_API_URL}/listings?${query}`,
     {
       cache: "no-store",
     }

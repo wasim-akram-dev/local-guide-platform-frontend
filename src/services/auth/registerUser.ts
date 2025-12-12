@@ -49,7 +49,7 @@ export const registerUser = async (_currentState: any, formData: FormData) => {
     }
 
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/register`,
+      `${process.env.NEXT_PUBLIC_BASE_API_URL}/auth/register`,
       {
         method: "POST",
         body: JSON.stringify(parsed.data),

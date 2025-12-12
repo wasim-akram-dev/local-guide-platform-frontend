@@ -11,7 +11,7 @@ const UpcomingBookingsPage = () => {
     const fetchBookings = async () => {
       try {
         const res = await fetch(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/bookings`,
+          `${process.env.NEXT_PUBLIC_BASE_API_URL}/bookings`,
           {
             method: "GET",
             credentials: "include",

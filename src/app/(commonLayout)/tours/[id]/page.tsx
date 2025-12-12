@@ -7,7 +7,7 @@ import getUserRole from "@/lib/getUserRole";
 
 async function getListing(id: string) {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/listings/${id}`,
+    `${process.env.NEXT_PUBLIC_BASE_API_URL}/listings/${id}`,
     {
       cache: "no-store",
     }

@@ -54,7 +54,7 @@ const AdminBookingsManagementPage = () => {
   //     if (statusFilter) params.status = statusFilter;
 
   //     const { data } = await axios.get(
-  //       `${process.env.NEXT_PUBLIC_BACKEND_URL}/bookings`,
+  //       `${process.env.NEXT_PUBLIC_BASE_API_URL}/bookings`,
   //       {
   //         params: params,
   //         withCredentials: true,
@@ -76,7 +76,7 @@ const AdminBookingsManagementPage = () => {
       if (statusFilter) params.status = statusFilter;
 
       const { data } = await axios.get(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/bookings`,
+        `${process.env.NEXT_PUBLIC_BASE_API_URL}/bookings`,
         {
           params: params,
           withCredentials: true,
@@ -105,7 +105,7 @@ const AdminBookingsManagementPage = () => {
   ) => {
     try {
       const res = await axios.patch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/bookings/${bookingId}/status`,
+        `${process.env.NEXT_PUBLIC_BASE_API_URL}/bookings/${bookingId}/status`,
         { status: newStatus },
         {
           withCredentials: true,
@@ -126,7 +126,7 @@ const AdminBookingsManagementPage = () => {
   const cancelBooking = async (bookingId: string) => {
     try {
       const res = await axios.patch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/bookings/${bookingId}/cancel`,
+        `${process.env.NEXT_PUBLIC_BASE_API_URL}/bookings/${bookingId}/cancel`,
         {},
         {
           withCredentials: true,
