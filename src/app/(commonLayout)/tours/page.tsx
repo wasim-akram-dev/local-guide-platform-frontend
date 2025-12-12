@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
+export const dynamic = "force-dynamic";
 import FilterSidebar from "@/components/modules/Tours/FilterSidebar";
 import ListingGrid from "@/components/modules/Tours/ListingGrid";
 

@@ -22,7 +22,7 @@ const FeaturedTours = ({ tours }: { tours: IListing[] }) => {
         <div className="grid md:grid-cols-3 gap-8 mt-12">
           {tours.map((tour, index) => (
             <motion.div
-              key={tour.id}
+              key={tour?.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -31,23 +31,23 @@ const FeaturedTours = ({ tours }: { tours: IListing[] }) => {
             >
               <Image
                 // src={tour.images[0]}
-                src={DemoFeaturedDestinationsImage}
-                alt={tour.title}
+                src={tour?.images[0] || DemoFeaturedDestinationsImage}
+                alt={tour?.title}
                 width={500}
                 height={350}
                 className="h-56 w-full object-cover"
               />
 
               <div className="p-5">
-                <h3 className="font-bold text-lg">{tour.title}</h3>
-                <p className="text-gray-500 text-sm mt-1">{tour.city}</p>
+                <h3 className="font-bold text-lg">{tour?.title}</h3>
+                <p className="text-gray-500 text-sm mt-1">{tour?.city}</p>
 
                 <div className="flex justify-between items-center mt-4">
                   <div className="flex items-center gap-1">
                     <Star size={18} className="text-yellow-400" />
                     <span className="text-sm font-medium">{4.8}</span>
                   </div>
-                  <span className="font-semibold">৳{tour.tourFee}</span>
+                  <span className="font-semibold">৳{tour?.tourFee}</span>
                 </div>
               </div>
             </motion.div>

@@ -3,13 +3,15 @@
 import { motion } from "framer-motion";
 import { Quote } from "lucide-react";
 import Image from "next/image";
-import DemoUserPhoto from "../../../assets/images/avatar.jpeg";
+import DemoReviewerPhoto from "../../../assets/images/avatar.jpeg";
+import DemoReviewerPhoto3 from "../../../assets/images/kamal_hossain.webp";
+import DemoReviewerPhoto2 from "../../../assets/images/man-smiling.webp";
 
 const testimonials = [
   {
     id: 1,
-    name: "Amina Rahman",
-    photo: DemoUserPhoto,
+    name: "Amin Rahman",
+    photo: DemoReviewerPhoto,
     feedback:
       "I had an amazing experience with my local guide. The tour was authentic and full of surprises!",
     location: "Dhaka, Bangladesh",
@@ -17,15 +19,15 @@ const testimonials = [
   {
     id: 2,
     name: "Rafiq Hossain",
-    photo: DemoUserPhoto,
+    photo: DemoReviewerPhoto2,
     feedback:
       "Locana helped me find a guide who showed me hidden gems around the city. Highly recommended!",
     location: "Chittagong, Bangladesh",
   },
   {
     id: 3,
-    name: "Sabrina Karim",
-    photo: DemoUserPhoto,
+    name: "Sabbir Khan",
+    photo: DemoReviewerPhoto3,
     feedback:
       "The tour was perfectly organized. My guide was knowledgeable, friendly, and very accommodating.",
     location: "Sylhet, Bangladesh",

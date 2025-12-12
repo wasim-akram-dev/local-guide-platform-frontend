@@ -3,9 +3,9 @@
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 import Image from "next/image";
-import Jubayer_Ahmad from "../../../assets/images/jubayer_ahmad.avif";
+import Jubayer_Ahmad from "../../../assets/images/jubayer_ahmad.png";
 import Kamal_Hossain from "../../../assets/images/kamal_hossain.webp";
-import Mahbubur_Rahman from "../../../assets/images/mahbubur_rahman.avif";
+import Mahbubur_Rahman from "../../../assets/images/mahbubur_rahman.png";
 
 const guides = [
   {
