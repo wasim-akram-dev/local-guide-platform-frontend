@@ -26,7 +26,7 @@ function PublicFooter() {
               </li>
               <li>
                 <Link
-                  href="/about"
+                  href="/"
                   className="text-muted-foreground hover:text-foreground"
                 >
                   About Us
@@ -34,7 +34,7 @@ function PublicFooter() {
               </li>
               <li>
                 <Link
-                  href="/services"
+                  href="/"
                   className="text-muted-foreground hover:text-foreground"
                 >
                   Services
@@ -42,7 +42,7 @@ function PublicFooter() {
               </li>
               <li>
                 <Link
-                  href="/contact"
+                  href="/"
                   className="text-muted-foreground hover:text-foreground"
                 >
                   Contact
