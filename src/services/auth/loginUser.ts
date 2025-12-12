@@ -39,13 +39,16 @@ export const loginUser = async (
       };
     }
 
-    const res = await fetch("http://localhost:5000/api/auth/login", {
-      method: "POST",
-      body: JSON.stringify(loginData),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/login`,
+      {
+        method: "POST",
+        body: JSON.stringify(loginData),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     const result = await res.json();
     console.log("Result", result);

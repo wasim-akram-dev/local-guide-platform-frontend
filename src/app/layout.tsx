@@ -31,9 +31,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        {children}
+        <Toaster position="top-right" richColors />
         <Suspense fallback={null}>
-          {children}
-          <Toaster position="top-right" richColors />
           <LoginSuccessToast />
           <LogoutSuccessToast />
         </Suspense>

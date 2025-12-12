@@ -17,7 +17,7 @@ import { Input } from "./ui/input";
 
 const RegisterForm = () => {
   const [state, formAction, isPending] = useActionState(registerUser, null);
-  // console.log("state: from register-form", state);
+  console.log("state: from register-form", state);
 
   const getFieldError = (fieldName: string) => {
     if (state && state.errors) {
