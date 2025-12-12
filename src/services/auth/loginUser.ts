@@ -6,6 +6,7 @@ import {
   isValidRedirectForRole,
   UserRole,
 } from "@/lib/auth-utils";
+import { serverFetch } from "@/lib/server-fetch";
 import { loginValidationZodSchema } from "@/zod/auth.validation";
 import { parse } from "cookie";
 import jwt, { JwtPayload } from "jsonwebtoken";
@@ -39,16 +40,23 @@ export const loginUser = async (
       };
     }
 
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/login`,
-      {
-        method: "POST",
-        body: JSON.stringify(loginData),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    // const res = await fetch(
+    //   `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/login`,
+    //   {
+    //     method: "POST",
+    //     body: JSON.stringify(loginData),
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //   }
+    // );
+
+    const res = await serverFetch.post("/auth/login", {
+      body: JSON.stringify(loginData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
     const result = await res.json();
     console.log("Result", result);

@@ -56,6 +56,12 @@ export default function UserManagementTable({
         credentials: "include",
       });
 
+      // const res = await serverFetch.get(`/users`, {
+      //   method: "GET",
+      //   credentials: "include",
+      // });
+      // console.log(res, "res");
+
       if (!res.ok) {
         console.error("Failed to fetch users:", res.status, res.statusText);
         setUsers([]); // prevent undefined error
