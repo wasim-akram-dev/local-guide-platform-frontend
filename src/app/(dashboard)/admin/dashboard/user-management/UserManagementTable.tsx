@@ -54,11 +54,18 @@ export default function UserManagementTable({
       const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users`, {
         credentials: "include",
       });
+
+      if (!res.ok) {
+        console.error("Failed to fetch users:", res.status, res.statusText);
+        setUsers([]); // prevent undefined error
+        return;
+      }
+
       const data = await res.json();
-      //   console.log(data.data.users);
-      setUsers(data.data.users);
+      setUsers(data.data?.users || []); // optional chaining & fallback
     } catch (err) {
       console.error(err);
+      setUsers([]); // fallback if fetch throws
     } finally {
       setLoading(false);
     }
