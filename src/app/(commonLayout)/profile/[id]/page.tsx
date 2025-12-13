@@ -12,6 +12,7 @@ export default async function ProfilePage({
 }) {
   const { id } = await params;
   const user = await getProfile(id);
+  console.log(user, "from profile page");
 
   return (
     <div className="max-w-6xl mx-auto p-6 space-y-6">

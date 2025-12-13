@@ -6,7 +6,9 @@ import { serverFetch } from "@/lib/server-fetch";
 // ---------------------- GET MY BOOKINGS ----------------------
 export async function getMyBookings() {
   try {
-    const response = await serverFetch.get(`/bookings`);
+    const response = await serverFetch.get(`/bookings`, {
+      cache: "no-store",
+    });
     return await response.json();
   } catch (error: any) {
     return {
@@ -39,6 +41,23 @@ export async function createBooking(
     return {
       success: false,
       message: error.message ?? "Failed to create listing",
+    };
+  }
+}
+
+// ---------------------- CANCEL BOOKING -----------------------
+export async function CancelBooking(bookingId: string) {
+  try {
+    const response = await serverFetch.patch(`/bookings/${bookingId}/cancel`, {
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({}),
+    });
+
+    return await response.json();
+  } catch (error: any) {
+    return {
+      success: false,
+      message: error.message ?? "Failed to cancel booking",
     };
   }
 }

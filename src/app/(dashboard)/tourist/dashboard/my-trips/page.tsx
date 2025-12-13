@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { getMyBookings } from "@/services/tourist/bookingManagement";
 import Link from "next/link";
+import CancelBookingButton from "./CancelBookingButton";
 
 export default async function MyBookingsPage() {
   const { data: bookings } = await getMyBookings();
@@ -68,6 +69,7 @@ export default async function MyBookingsPage() {
               {/* {b.status === "PENDING" && <Button size="sm">Cancel</Button>}
               {b.status === "ACCEPTED" && <Button size="sm">Pay</Button>}
               {b.status === "COMPLETED" && <Button size="sm">Review</Button>} */}
+              {b.status && <CancelBookingButton status={b.status} id={b.id} />}
             </div>
           </div>
         ))}
