@@ -3,6 +3,7 @@
 
 import { Button } from "@/components/ui/button";
 import { UserRole } from "@/lib/auth-utils";
+import { createBooking } from "@/services/tourist/bookingManagement";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -34,25 +35,9 @@ export default function BookingWidget({
     setLoading(true);
 
     try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_API_URL}/bookings`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          credentials: "include",
-          body: JSON.stringify({
-            listingId: tourId,
-            date,
-            numberOfPeople: group,
-          }),
-        }
-      );
-
-      const data = await res.json();
-      console.log(data);
-      if (!res.ok) throw new Error(data?.message || "Booking failed");
+      const data = await createBooking(tourId, date, group);
+      console.log(data, "from booiwidd");
+      if (!data) throw new Error(data?.message || "Booking failed");
 
       toast.success("Booking request sent to guide!");
       setDate("");

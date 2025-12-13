@@ -6,7 +6,7 @@ Locana is a modern travel experience platform that connects travelers with verif
 
 ## 🚀 **Live URL**
 
-🔗 **Live Demo:** _https://locana.vercel.app_
+🔗 **Live Demo:** _https://locana-delta.vercel.app_
 
 ---
 

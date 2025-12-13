@@ -4,7 +4,7 @@
 import { serverFetch } from "@/lib/server-fetch";
 
 // ---------------------- GET MY BOOKINGS ----------------------
-export async function getMyBookings() {
+export async function fetchBookings() {
   try {
     const response = await serverFetch.get(`/bookings`);
     return await response.json();
@@ -16,29 +16,19 @@ export async function getMyBookings() {
   }
 }
 
-// ---------------------- CREATE BOOKING ----------------------
-export async function createBooking(
-  tourId: string,
-  date: string,
-  group: number
-) {
+// ---------------------- UPDATE STATUS -----------------------
+export async function UpdateStatus(id: string, status: string) {
   try {
-    const response = await serverFetch.post(`/bookings`, {
+    const response = await serverFetch.patch(`/bookings/${id}/status`, {
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        listingId: tourId,
-        date,
-        numberOfPeople: group,
-      }),
+      body: JSON.stringify({ status }),
     });
 
-    const result = await response.json();
-    // console.log(result);
-    return result;
+    return await response.json();
   } catch (error: any) {
     return {
       success: false,
-      message: error.message ?? "Failed to create listing",
+      message: error.message ?? "Failed to update listing",
     };
   }
 }

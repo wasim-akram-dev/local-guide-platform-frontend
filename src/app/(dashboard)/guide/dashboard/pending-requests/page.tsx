@@ -4,6 +4,10 @@
 import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
+import {
+  fetchBookings,
+  UpdateStatus,
+} from "@/services/guide/pendingRequestManagement";
 import { toast } from "sonner";
 
 export default function PendingRequestsPage() {
@@ -16,15 +20,9 @@ export default function PendingRequestsPage() {
 
   const fetchMyBookings = async () => {
     try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_API_URL}/bookings`,
-        {
-          credentials: "include",
-        }
-      );
-
-      const data = await res.json();
-      if (!res.ok) throw new Error(data?.message || "Failed to load bookings");
+      const data = await fetchBookings();
+      // console.log(data, "aaal");
+      if (!data) throw new Error(data?.message || "Failed to load bookings");
 
       // Only PENDING items
       const pending = data.data.filter((b: any) => b.status === "PENDING");
@@ -39,20 +37,8 @@ export default function PendingRequestsPage() {
 
   const updateStatus = async (id: string, status: string) => {
     try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_API_URL}/bookings/${id}/status`,
-        {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          credentials: "include",
-          body: JSON.stringify({ status }),
-        }
-      );
-
-      const data = await res.json();
-      if (!res.ok) throw new Error(data?.message || "Failed to update status");
+      const data = await UpdateStatus(id, status);
+      if (!data) throw new Error(data?.message || "Failed to update status");
 
       toast.success(`Booking ${status.toLowerCase()} successfully`);
 

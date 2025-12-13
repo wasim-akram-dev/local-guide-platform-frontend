@@ -16,7 +16,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import {
+  deleteUser,
+  getUsers,
+  updateUserRole,
+} from "@/services/admin/userManagement";
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 export type User = {
   id: string;
@@ -51,28 +57,12 @@ export default function UserManagementTable({
   const fetchUsers = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/users`, {
-        method: "GET",
-        credentials: "include",
-      });
+      const data = await getUsers();
 
-      // const res = await serverFetch.get(`/users`, {
-      //   method: "GET",
-      //   credentials: "include",
-      // });
-      // console.log(res, "res");
-
-      if (!res.ok) {
-        console.error("Failed to fetch users:", res.status, res.statusText);
-        setUsers([]); // prevent undefined error
-        return;
-      }
-
-      const data = await res.json();
-      setUsers(data.data?.users || []); // optional chaining & fallback
+      setUsers(data || []);
     } catch (err) {
       console.error(err);
-      setUsers([]); // fallback if fetch throws
+      setUsers([]);
     } finally {
       setLoading(false);
     }
@@ -85,18 +75,11 @@ export default function UserManagementTable({
   const handleDeleteUser = async () => {
     if (!userToDelete) return;
     try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_API_URL}/users/${userToDelete.id}`,
-        {
-          method: "DELETE",
-          credentials: "include",
-        }
-      );
-      if (res.ok) {
+      const res = await deleteUser(userToDelete.id);
+      if (res) {
         setUsers((prev) => prev.filter((u) => u.id !== userToDelete.id));
         setIsDeleteOpen(false);
-      } else {
-        alert("Failed to delete user");
+        toast.success("User Deleted successfully");
       }
     } catch (err) {
       console.error(err);
@@ -107,24 +90,16 @@ export default function UserManagementTable({
   const handleRoleChange = async () => {
     if (!userToUpdate) return;
     try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_API_URL}/users/${userToUpdate.id}/role`,
-        {
-          method: "PATCH",
-          headers: { "Content-Type": "application/json" },
-          credentials: "include",
-          body: JSON.stringify({ role: newRole }),
-        }
-      );
-      if (res.ok) {
+      const res = await updateUserRole(userToUpdate.id, newRole);
+      console.log(res, "form usremamam");
+      if (res) {
         setUsers((prev) =>
           prev.map((u) =>
             u.id === userToUpdate.id ? { ...u, role: newRole } : u
           )
         );
         setIsRoleOpen(false);
-      } else {
-        alert("Failed to update role");
+        toast.success("Role updated successfully");
       }
     } catch (err) {
       console.error(err);

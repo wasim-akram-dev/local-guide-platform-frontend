@@ -1,7 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import axios from "axios";
+import {
+  CancelBooking,
+  getBookings,
+  updateBookingStatus,
+} from "@/services/admin/bookingManagement";
 import { format } from "date-fns";
 import { useCallback, useEffect, useState } from "react";
 import { toast } from "sonner";
@@ -75,15 +79,9 @@ const AdminBookingsManagementPage = () => {
       if (search) params.search = search;
       if (statusFilter) params.status = statusFilter;
 
-      const { data } = await axios.get(
-        `${process.env.NEXT_PUBLIC_BASE_API_URL}/bookings`,
-        {
-          params: params,
-          withCredentials: true,
-        }
-      );
-
-      setBookings(data.data);
+      const data = await getBookings(params);
+      console.log(data, "from bookig");
+      setBookings(data?.data);
     } catch (err) {
       console.error(err);
     } finally {
@@ -104,19 +102,12 @@ const AdminBookingsManagementPage = () => {
     newStatus: Booking["status"]
   ) => {
     try {
-      const res = await axios.patch(
-        `${process.env.NEXT_PUBLIC_BASE_API_URL}/bookings/${bookingId}/status`,
-        { status: newStatus },
-        {
-          withCredentials: true,
-        }
-      );
+      const res = await updateBookingStatus(bookingId, newStatus);
+      console.log(res, "from bookig sta");
 
-      if (res.status) {
+      if (res) {
         toast.success("Update Status Successfully");
         fetchBookings();
-      } else {
-        alert("Failed to update listing");
       }
     } catch (error: any) {
       console.error("Failed to update status:", error);
@@ -125,18 +116,10 @@ const AdminBookingsManagementPage = () => {
 
   const cancelBooking = async (bookingId: string) => {
     try {
-      const res = await axios.patch(
-        `${process.env.NEXT_PUBLIC_BASE_API_URL}/bookings/${bookingId}/cancel`,
-        {},
-        {
-          withCredentials: true,
-        }
-      );
-      if (res.status) {
+      const res = await CancelBooking(bookingId);
+      if (res) {
         toast.success("Booking Cancelled Successfully");
         fetchBookings();
-      } else {
-        alert("Failed to delete listing");
       }
     } catch (error: any) {
       console.error("Failed to cancel booking:", error);

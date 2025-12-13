@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
+import { fetchUpcomingBookings } from "@/services/guide/upcomingBookingManagement";
 import { useEffect, useState } from "react";
 
 const UpcomingBookingsPage = () => {
@@ -10,15 +11,9 @@ const UpcomingBookingsPage = () => {
   useEffect(() => {
     const fetchBookings = async () => {
       try {
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_BASE_API_URL}/bookings`,
-          {
-            method: "GET",
-            credentials: "include",
-          }
-        );
+        const json = await fetchUpcomingBookings();
 
-        const json = await res.json();
+        console.log("from fetchUpcomingBookings", json);
 
         // Only keep ACCEPTED + future bookings
         const filtered = json?.data?.filter((b: any) => {

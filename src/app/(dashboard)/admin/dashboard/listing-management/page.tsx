@@ -16,6 +16,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import {
+  deleteListing,
+  getListings,
+  updateListing,
+} from "@/services/admin/listinsgManagement";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
@@ -58,13 +63,7 @@ export default function AdminListingManagementPage() {
   const fetchListings = async () => {
     setLoading(true);
     try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_API_URL}/listings`,
-        {
-          credentials: "include",
-        }
-      );
-      const data = await res.json();
+      const data = await getListings();
       console.log(data);
       setListings(data.data);
     } catch (err) {
@@ -81,18 +80,11 @@ export default function AdminListingManagementPage() {
   const handleDelete = async () => {
     if (!listingToDelete) return;
     try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_API_URL}/listings/${listingToDelete.id}`,
-        {
-          method: "DELETE",
-          credentials: "include",
-        }
-      );
-      if (res.ok) {
+      const res = await deleteListing(listingToDelete.id);
+      if (res) {
         setListings((prev) => prev.filter((l) => l.id !== listingToDelete.id));
         setIsDeleteOpen(false);
-      } else {
-        alert("Failed to delete listing");
+        toast.success("Listing Deleted successfully");
       }
     } catch (err) {
       console.error(err);
@@ -103,17 +95,10 @@ export default function AdminListingManagementPage() {
   const handleEditSave = async () => {
     if (!listingToEdit) return;
     try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_API_URL}/listings/${listingToEdit.id}`,
-        {
-          method: "PATCH",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(editData),
-          credentials: "include",
-        }
-      );
-      if (res.ok) {
-        const updated = await res.json();
+      const res = await updateListing(listingToEdit.id, editData);
+      console.log(res);
+      if (res) {
+        const updated = res;
         setListings((prev) =>
           prev.map((l) => (l.id === listingToEdit.id ? updated.data : l))
         );
