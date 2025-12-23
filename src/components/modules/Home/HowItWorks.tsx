@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { CalendarCheck, Compass, Search } from "lucide-react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 const steps = [
@@ -72,9 +73,11 @@ const HowItWorks = () => {
           transition={{ delay: 0.7 }}
           className="mt-12"
         >
-          <Button size="lg" onClick={() => router.push("/tours")}>
-            Explore Tours
-          </Button>
+          <Link href="/tours">
+            <Button className="cursor-pointer" size="lg">
+              Explore Tours
+            </Button>
+          </Link>
         </motion.div>
       </div>
     </section>
