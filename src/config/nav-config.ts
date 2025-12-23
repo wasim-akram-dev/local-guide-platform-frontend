@@ -11,6 +11,9 @@ export async function getNavConfig() {
     GUEST: [
       { href: "/tours", label: "Explore Tours" },
       { href: "/register?role=guide", label: "Become a Guide" },
+      { href: "/about", label: "About" },
+      { href: "/contact", label: "Contact" },
+      { href: "/faq", label: "FAQ" },
     ],
 
     TOURIST: [

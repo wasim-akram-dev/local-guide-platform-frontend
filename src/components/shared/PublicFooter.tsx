@@ -26,7 +26,7 @@ function PublicFooter() {
               </li>
               <li>
                 <Link
-                  href="/"
+                  href="/about"
                   className="text-muted-foreground hover:text-foreground"
                 >
                   About Us
@@ -34,7 +34,7 @@ function PublicFooter() {
               </li>
               <li>
                 <Link
-                  href="/"
+                  href="/tours"
                   className="text-muted-foreground hover:text-foreground"
                 >
                   Services
@@ -42,7 +42,7 @@ function PublicFooter() {
               </li>
               <li>
                 <Link
-                  href="/"
+                  href="/contact"
                   className="text-muted-foreground hover:text-foreground"
                 >
                   Contact
@@ -55,7 +55,7 @@ function PublicFooter() {
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
-                  href="#"
+                  href="/faq"
                   className="text-muted-foreground hover:text-foreground"
                 >
                   FAQ
@@ -63,7 +63,7 @@ function PublicFooter() {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/help"
                   className="text-muted-foreground hover:text-foreground"
                 >
                   Help Center
@@ -71,7 +71,7 @@ function PublicFooter() {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/terms"
                   className="text-muted-foreground hover:text-foreground"
                 >
                   Terms of Service
@@ -79,7 +79,7 @@ function PublicFooter() {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/privacy"
                   className="text-muted-foreground hover:text-foreground"
                 >
                   Privacy Policy
