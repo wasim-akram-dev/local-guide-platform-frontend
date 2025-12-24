@@ -25,33 +25,32 @@ export default function FilterSidebar() {
     }).toString();
 
     router.push(`/tours?${query}`);
-    // setCity("");
   };
 
   return (
-    <div className="flex flex-col items-center justify-center space-y-4 md:space-y-6 bg-white px-4 py-6 shadow-2xl rounded-xl">
-      <h2 className="text-lg font-bold">Search & Filters Options</h2>
+    <div className="rounded-xl border bg-white p-6 shadow-sm space-y-5">
+      <h3 className="text-lg font-semibold">Filter Tours</h3>
 
       <input
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        placeholder="Search by title"
-        className="w-full border p-2 rounded"
+        placeholder="Search tours"
+        className="w-full rounded-md border px-3 py-2 text-sm"
       />
 
       <input
         value={city}
         onChange={(e) => setCity(e.target.value)}
         placeholder="City"
-        className="w-full border p-2 rounded"
+        className="w-full rounded-md border px-3 py-2 text-sm"
       />
 
       <select
         value={category}
         onChange={(e) => setCategory(e.target.value)}
-        className="w-full border p-2 rounded"
+        className="w-full rounded-md border px-3 py-2 text-sm"
       >
-        <option value="">Please choose category:</option>
+        <option value="">All Categories</option>
         <option value="Adventure">Adventure</option>
         <option value="City Tour">City Tour</option>
         <option value="Culture">Culture</option>
@@ -60,20 +59,20 @@ export default function FilterSidebar() {
         <option value="Others">Others</option>
       </select>
 
-      <div className="grid grid-cols-2 gap-2">
+      <div className="grid grid-cols-2 gap-3">
         <input
           type="number"
           value={priceMin}
           onChange={(e) => setPriceMin(e.target.value)}
-          placeholder="Min Price"
-          className="border p-2 rounded"
+          placeholder="Min ৳"
+          className="rounded-md border px-3 py-2 text-sm"
         />
         <input
           type="number"
           value={priceMax}
           onChange={(e) => setPriceMax(e.target.value)}
-          placeholder="Max Price"
-          className="border p-2 rounded"
+          placeholder="Max ৳"
+          className="rounded-md border px-3 py-2 text-sm"
         />
       </div>
 
@@ -82,12 +81,12 @@ export default function FilterSidebar() {
         value={duration}
         onChange={(e) => setDuration(e.target.value)}
         placeholder="Duration (days)"
-        className="w-full border p-2 rounded"
+        className="w-full rounded-md border px-3 py-2 text-sm"
       />
 
       <button
         onClick={handleApply}
-        className="bg-slate-900 text-white w-full p-2 rounded font-semibold"
+        className="w-full rounded-md bg-primary py-2 text-white font-medium hover:bg-primary/90 transition"
       >
         Apply Filters
       </button>

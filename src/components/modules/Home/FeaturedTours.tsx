@@ -21,37 +21,38 @@ const FeaturedTours = ({ tours }: { tours: IListing[] }) => {
         </p>
 
         <div className="grid md:grid-cols-3 gap-8 mt-12">
-          {(tours ?? []).map((tour, index) => (
-            <motion.div
-              key={tour?.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer"
-            >
-              <Image
-                // src={tour.images[0]}
-                src={tour?.images[0] || DemoFeaturedDestinationsImage}
-                alt={tour?.title}
-                width={500}
-                height={350}
-                className="h-56 w-full object-cover"
-              />
+          {(tours ?? []).slice(0, 7).map((tour, index) => (
+            <Link key={tour?.id} href={`/tours/${tour.id}`}>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer"
+              >
+                <Image
+                  // src={tour.images[0]}
+                  src={tour?.images[0] || DemoFeaturedDestinationsImage}
+                  alt={tour?.title}
+                  width={500}
+                  height={350}
+                  className="h-56 w-full object-cover"
+                />
 
-              <div className="p-5">
-                <h3 className="font-bold text-lg">{tour?.title}</h3>
-                <p className="text-gray-500 text-sm mt-1">{tour?.city}</p>
+                <div className="p-5">
+                  <h3 className="font-bold text-lg">{tour?.title}</h3>
+                  <p className="text-gray-500 text-sm mt-1">{tour?.city}</p>
 
-                <div className="flex justify-between items-center mt-4">
-                  <div className="flex items-center gap-1">
-                    <Star size={18} className="text-yellow-400" />
-                    <span className="text-sm font-medium">{4.8}</span>
+                  <div className="flex justify-between items-center mt-4">
+                    <div className="flex items-center gap-1">
+                      <Star size={18} className="text-yellow-400" />
+                      <span className="text-sm font-medium">{4.8}</span>
+                    </div>
+                    <span className="font-semibold">৳{tour?.tourFee}</span>
                   </div>
-                  <span className="font-semibold">৳{tour?.tourFee}</span>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </Link>
           ))}
         </div>
 
