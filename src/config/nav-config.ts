@@ -5,7 +5,6 @@ import { getUserInfo } from "@/services/auth/getUserInfo";
 export async function getNavConfig() {
   const user = await getUserInfo();
   const role = user?.role || "GUEST";
-  const userId = user?.id;
 
   const configs = {
     GUEST: [
@@ -18,23 +17,30 @@ export async function getNavConfig() {
 
     TOURIST: [
       { href: "/tours", label: "Explore Tours" },
+      { href: "/about", label: "About" },
+      { href: "/contact", label: "Contact" },
+      { href: "/faq", label: "FAQ" },
       { href: "/tourist/dashboard/my-trips", label: "My Bookings" },
       { href: "/tourist/dashboard", label: "Dashboard" },
-      { href: `/profile/${userId}`, label: "Profile" },
+      { href: "/my-profile", label: "Profile" },
     ],
 
     GUIDE: [
       { href: "/tours", label: "Explore Tours" },
+      { href: "/about", label: "About" },
+      { href: "/contact", label: "Contact" },
+      { href: "/faq", label: "FAQ" },
       { href: "/guide/dashboard", label: "Dashboard" },
       { href: "/guide/dashboard/my-listings", label: "My Listings" },
-      { href: `/profile/${userId}`, label: "Profile" },
+      { href: "/my-profile", label: "Profile" },
     ],
 
     ADMIN: [
       { href: "/admin/dashboard", label: "Admin Dashboard" },
       { href: "/admin/dashboard/user-management", label: "Manage Users" },
       { href: "/admin/dashboard/listing-management", label: "Manage Listings" },
-      { href: `/profile/${userId}`, label: "Profile" },
+      { href: "/admin/dashboard/booking-management", label: "Manage Bookings" },
+      { href: "/my-profile", label: "Profile" },
     ],
   };
 
